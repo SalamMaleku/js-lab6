@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div class="labels">
+    <li>Секунд</li>
+  </div>
+  <div id="countdown">
+    <div id="tiles"></div>
+</div>
+<script>
+    let target_date = new Date().getTime() + (1000*3600*48);
+    let seconds;
+
+    let countdown = document.getElementById("tiles");
+
+    getCountdown();
+
+    setInterval(function () { getCountdown(); }, 1000);
+
+    function getCountdown(){
+
+        let current_date = new Date().getTime();
+        let seconds_left = (target_date - current_date) / 1000;
+
+        seconds = pad( parseInt( seconds_left % 15 ) );
+
+
+        countdown.innerHTML = "<span>" + seconds + "</span>";
+    }
+
+    function pad(n) {
+        return (n < 10 ? '0' : '') + n;
+    }
+  </script>
+</body>
+</html>
